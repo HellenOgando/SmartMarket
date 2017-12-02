@@ -4,7 +4,8 @@
 
     <uses-permission android:name="android.permission.NFC" />
 
-    <uses-feature android:name="android.hardware.nfc" />
+    <uses-feature android:name="android.hardware.nfc"
+        android:required="false"/>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -25,7 +26,9 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity" />
-        <activity android:name=".NFCActivity"></activity>
+        <activity android:name=".NFCActivity" />
+
+
     </application>
 
 </manifest>
