@@ -63,7 +63,7 @@ public class TextRecord implements ParsedNdefRecord {
         return mLanguageCode;
     }
 
-    
+
     public static TextRecord parse(NdefRecord record) {
         Preconditions.checkArgument(record.getTnf() == NdefRecord.TNF_WELL_KNOWN);
         Preconditions.checkArgument(Arrays.equals(record.getType(), NdefRecord.RTD_TEXT));
