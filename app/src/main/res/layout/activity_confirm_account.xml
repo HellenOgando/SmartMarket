@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center_horizontal"
     android:weightSum="1"
     android:background="@color/colorPrimary"
-    tools:context="com.example.hellen.smartmarket.LoginActivity">
+    tools:context="com.example.hellen.smartmarket.ConfirmAccountActivity">
+
 
     <ImageView
         android:layout_width="wrap_content"
@@ -17,6 +17,16 @@
         android:layout_weight="0.3"
         android:layout_margin="16dp"
         android:src="@drawable/whitelogo_01"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Confirmación de Cuenta" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -31,18 +41,18 @@
 
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etCode"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
+        android:hint="Código de Confirmación"
         android:textColor="@color/colorWhite"
         android:ems="10"
-        android:hint="Contraseña"
         android:backgroundTint="@color/colorWhite"
-        android:inputType="textPassword" />
+        android:inputType="textPersonName" />
 
     <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnConfirm"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
@@ -50,14 +60,14 @@
         fancy:fb_borderColor="@color/colorWhite"
         fancy:fb_borderWidth="2dp"
         fancy:fb_radius="30dp"
-        fancy:fb_fontIconResource="&#xf007;"
+        fancy:fb_fontIconResource="&#xf058;"
         fancy:fb_iconPosition="left"
-        fancy:fb_text=" INICIAR SESIÓN"
+        fancy:fb_text=" CONFIRMAR"
         fancy:fb_focusColor="@color/colorWhite"
         fancy:fb_defaultColor="@color/colorPrimary"/>
 
     <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/btnSignup"
+        android:id="@+id/btnRequest"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
@@ -65,23 +75,11 @@
         fancy:fb_borderColor="@color/colorWhite"
         fancy:fb_borderWidth="2dp"
         fancy:fb_radius="30dp"
-        fancy:fb_fontIconResource="&#xf234;"
+        fancy:fb_fontIconResource="&#xf1d8;"
         fancy:fb_iconPosition="left"
-        fancy:fb_text=" CREAR CUENTA"
+        fancy:fb_text=" SOLICITAR UN CÓDIGO"
         fancy:fb_defaultColor="@color/colorWhite"
         fancy:fb_focusColor="@color/colorPrimary"
         fancy:fb_textColor="@color/colorPrimary"/>
-
-    <TextView
-        android:id="@+id/tvChangePass"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        android:text="Cambiar contraseña" />
-
 
 </LinearLayout>

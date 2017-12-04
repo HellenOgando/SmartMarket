@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center_horizontal"
     android:weightSum="1"
     android:background="@color/colorPrimary"
-    tools:context="com.example.hellen.smartmarket.LoginActivity">
+    tools:context="com.example.hellen.smartmarket.SignupActivity">
+
 
     <ImageView
         android:layout_width="wrap_content"
@@ -17,6 +17,7 @@
         android:layout_weight="0.3"
         android:layout_margin="16dp"
         android:src="@drawable/whitelogo_01"/>
+
 
     <EditText
         android:id="@+id/etEmail"
@@ -31,18 +32,41 @@
 
 
     <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:hint="Nombre"
+        android:textColor="@color/colorWhite"
+        android:ems="10"
+        android:backgroundTint="@color/colorWhite"
+        android:inputType="textPersonName" />
+
+    <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:textColor="@color/colorWhite"
         android:ems="10"
+        android:textColor="@color/colorWhite"
         android:hint="Contraseña"
         android:backgroundTint="@color/colorWhite"
         android:inputType="textPassword" />
 
+    <EditText
+        android:id="@+id/etConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:ems="10"
+        android:textColor="@color/colorWhite"
+        android:hint="Confirmar contraseña"
+        android:backgroundTint="@color/colorWhite"
+        android:inputType="textPassword" />
+
+
     <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnCreate"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
@@ -52,36 +76,9 @@
         fancy:fb_radius="30dp"
         fancy:fb_fontIconResource="&#xf007;"
         fancy:fb_iconPosition="left"
-        fancy:fb_text=" INICIAR SESIÓN"
+        fancy:fb_text=" CREAR CUENTA"
         fancy:fb_focusColor="@color/colorWhite"
         fancy:fb_defaultColor="@color/colorPrimary"/>
-
-    <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/btnSignup"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:layout_marginTop="15dp"
-        fancy:fb_borderColor="@color/colorWhite"
-        fancy:fb_borderWidth="2dp"
-        fancy:fb_radius="30dp"
-        fancy:fb_fontIconResource="&#xf234;"
-        fancy:fb_iconPosition="left"
-        fancy:fb_text=" CREAR CUENTA"
-        fancy:fb_defaultColor="@color/colorWhite"
-        fancy:fb_focusColor="@color/colorPrimary"
-        fancy:fb_textColor="@color/colorPrimary"/>
-
-    <TextView
-        android:id="@+id/tvChangePass"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        android:text="Cambiar contraseña" />
 
 
 </LinearLayout>
