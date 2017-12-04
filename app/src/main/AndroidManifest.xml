@@ -27,7 +27,8 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity" />
-        <activity android:name=".NFC2Activity"></activity>
+        <activity android:name=".NFC2Activity" />
+        <activity android:name=".AdminActivity"></activity>
     </application>
 
 </manifest>
