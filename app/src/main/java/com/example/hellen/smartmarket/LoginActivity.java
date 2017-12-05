@@ -164,7 +164,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void launchUser() {
-        Intent o = new Intent(this, UserActivity.class);
+
+        Intent o;
+        if(email.equals("hellenot95@gmail.com")){
+            o = new Intent(this, AdminActivity.class);
+        }else{
+            o = new Intent(this, MainActivity.class);
+        }
+
         o.putExtra("name", email);
         startActivity(o);
     }
