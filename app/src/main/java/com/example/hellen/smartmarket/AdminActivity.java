@@ -18,6 +18,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
+import com.example.hellen.smartmarket.Controllers.ManagerClass;
+import com.example.hellen.smartmarket.Models.Book;
+import com.example.hellen.smartmarket.Models.Product;
+
 import be.appfoundry.nfclibrary.activities.NfcActivity;
 import be.appfoundry.nfclibrary.exceptions.InsufficientCapacityException;
 import be.appfoundry.nfclibrary.exceptions.ReadOnlyTagException;
@@ -29,6 +35,7 @@ import be.appfoundry.nfclibrary.utilities.async.WriteEmailNfcAsync;
 import be.appfoundry.nfclibrary.utilities.interfaces.NfcReadUtility;
 import be.appfoundry.nfclibrary.utilities.interfaces.NfcWriteUtility;
 import be.appfoundry.nfclibrary.utilities.sync.NfcReadUtilityImpl;
+import mehdi.sakout.fancybuttons.FancyButton;
 
 public class AdminActivity extends NfcActivity {
 
@@ -45,6 +52,7 @@ public class AdminActivity extends NfcActivity {
             }
             if (result) {
                 Toast.makeText(AdminActivity.this, "Write has been done!", Toast.LENGTH_LONG).show();
+                new writeTable().execute();
             }
 
             Log.d(TAG,"Received our result : " + result);
@@ -71,22 +79,29 @@ public class AdminActivity extends NfcActivity {
     AsyncOperationCallback mAsyncOperationCallback;
     private AsyncTask<Object, Void, Boolean> mTask;
 
-    private Button btnAdd;
-    private EditText etText;
+    private FancyButton btnAdd;
+    private EditText etProdID;
+    private EditText etProdDesc;
+    private EditText etProdQuantity;
+    private EditText etProdPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        etText = (EditText) findViewById(R.id.etText);
-        btnAdd = (Button) findViewById(R.id.btnAdd);
+        etProdID = (EditText) findViewById(R.id.etProdID);
+        etProdDesc = (EditText) findViewById(R.id.etProdDesc);
+        etProdQuantity = (EditText) findViewById(R.id.etProdQuantity);
+        etProdPrice = (EditText) findViewById(R.id.etProdPrice);
+
+        btnAdd = (FancyButton) findViewById(R.id.btnAddProduct);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final String text = etText.getText().toString();
+                final String text = etProdID.getText().toString();
                 if (text.length() > 0) {
 
                     mAsyncOperationCallback = new AsyncOperationCallback() {
@@ -104,6 +119,40 @@ public class AdminActivity extends NfcActivity {
 
         enableBeam();
 
+    }
+
+    private class writeTable extends AsyncTask<Void, Integer, Integer>{
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+
+            ManagerClass managerClass = new ManagerClass();
+            CognitoCachingCredentialsProvider credentialsProvider = managerClass.getCredentials(AdminActivity.this);
+
+            Product product = new Product();
+            product.setProductID(etProdID.getText().toString());
+            product.setProductDesc(etProdDesc.getText().toString());
+            product.setProductQuantity(Integer.valueOf(etProdQuantity.getText().toString()));
+            product.setProductPrice(Integer.valueOf(etProdPrice.getText().toString()));
+
+            if (credentialsProvider != null) {
+                DynamoDBMapper dynamoDBMapper = managerClass.initDynamoClient(credentialsProvider);
+                dynamoDBMapper.save(product);
+            } else {
+                return 2;
+            }
+            return 1;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
+            if(integer == 1){
+                Toast.makeText(AdminActivity.this, "Table Updated", Toast.LENGTH_SHORT).show();
+            }else if(integer == 2){
+                Toast.makeText(AdminActivity.this, "An error ocurred", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
