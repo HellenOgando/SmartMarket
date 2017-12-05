@@ -164,7 +164,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void launchUser() {
-        Intent o = new Intent(this, AdminActivity.class);
+        Intent o = new Intent(this, UserActivity.class);
         o.putExtra("name", email);
         startActivity(o);
     }
