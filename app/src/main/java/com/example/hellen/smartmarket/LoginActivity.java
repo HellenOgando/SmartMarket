@@ -169,7 +169,7 @@ public class LoginActivity extends AppCompatActivity {
         if(email.equals("hellenot95@gmail.com")){
             o = new Intent(this, AdminActivity.class);
         }else{
-            o = new Intent(this, MainActivity.class);
+            o = new Intent(this, TestActivity.class);
         }
 
         o.putExtra("name", email);
