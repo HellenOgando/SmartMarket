@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
     tools:context="com.example.hellen.smartmarket.NFC2Activity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/nfc_01" />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btnCheckOut"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        fancy:fb_borderColor="@color/colorWhite"
+        fancy:fb_borderWidth="2dp"
+        fancy:fb_radius="30dp"
+        fancy:fb_text=" AÑADIR AL CARRITO"
+        fancy:fb_focusColor="@color/colorWhite"
+        android:visibility="invisible"
+        fancy:fb_defaultColor="@color/colorPrimary"/>
+
+</LinearLayout>
