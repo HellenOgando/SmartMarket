@@ -12,6 +12,14 @@ public class Product {
     private int productQuantity;
     private int productPrice;
 
+    public Product(String productID, int productQuantity) {
+        this.productID = productID;
+        this.productQuantity = productQuantity;
+    }
+
+    public Product() {
+    }
+
     @DynamoDBHashKey(attributeName = "ProductID")
     public String getProductID() {
         return productID;
