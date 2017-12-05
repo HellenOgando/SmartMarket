@@ -35,7 +35,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>{
 
         Product item = listData.get(position);
         holder.prodDesc.setText(item.getProductDesc());
-        holder.prodQuantity.setText(String.valueOf(item.getProductQuantity()));
+        holder.prodQuantity.setText("Cant: " + String.valueOf(item.getProductQuantity()));
         holder.prodPrice.setText("RD$ " + String.valueOf(item.getProductPrice()));
 
     }

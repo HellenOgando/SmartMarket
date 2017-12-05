@@ -27,7 +27,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
     }
     @Override
     public ProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = inflater.inflate(R.layout.productcardview, parent, false);
+        View v = inflater.inflate(R.layout.recentproducts, parent, false);
         return new ProductHolder(v);
     }
 
@@ -36,7 +36,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
 
         Product item = listData.get(position);
         holder.prodDesc.setText(item.getProductDesc());
-        holder.prodQuantity.setText("En inventario: "+ String.valueOf(item.getProductQuantity()));
         holder.prodPrice.setText("RD$ " + String.valueOf(item.getProductPrice()));
 
     }
@@ -58,7 +57,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
 
             prodDesc = (TextView) itemView.findViewById(R.id.productName);
             prodPrice = (TextView) itemView.findViewById(R.id.productPrice);
-            prodQuantity = (TextView) itemView.findViewById(R.id.productQuantity);
         }
     }
 }

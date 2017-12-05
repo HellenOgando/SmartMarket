@@ -12,8 +12,9 @@ public class Product {
     private int productQuantity;
     private int productPrice;
 
-    public Product(String productID, int productQuantity, int productPrice) {
+    public Product(String productID, String productDesc, int productQuantity, int productPrice) {
         this.productID = productID;
+        this.productDesc = productDesc;
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
     }

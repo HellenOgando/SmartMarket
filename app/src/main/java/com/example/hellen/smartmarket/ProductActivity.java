@@ -51,7 +51,7 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Singleton.getInnstance().orderList.add(new Product(prodID,cartQuantity, prodPrice));
+                Singleton.getInnstance().orderList.add(new Product(prodID, prodDesc ,cartQuantity, prodPrice));
                 finish();
             }
         });
