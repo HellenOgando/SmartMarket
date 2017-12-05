@@ -1,7 +1,9 @@
 package com.example.hellen.smartmarket;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,11 +39,13 @@ public class LoginActivity extends AppCompatActivity {
     private String email;
     private String pass;
     private ProgressDialog waitDialog;
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sharedpreferences = getSharedPreferences("loginPref", Context.MODE_PRIVATE);
 
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
@@ -50,6 +54,12 @@ public class LoginActivity extends AppCompatActivity {
         tvChangePass = (TextView) findViewById(R.id.tvChangePass);
 
         AppHelper.init(getApplicationContext());
+
+        if(sharedpreferences.getBoolean("isLogged", false)){
+            Intent i = new Intent(LoginActivity.this, UserActivity.class);
+            startActivity(i);
+            finish();
+        }
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,7 +179,11 @@ public class LoginActivity extends AppCompatActivity {
         if(email.equals("hellenot95@gmail.com")){
             o = new Intent(this, AdminActivity.class);
         }else{
-            o = new Intent(this, NFC2Activity.class);
+            o = new Intent(this, UserActivity.class);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putBoolean("isLogged", true);
+            editor.putString("user", email);
+            editor.apply();
         }
 
         o.putExtra("name", email);
