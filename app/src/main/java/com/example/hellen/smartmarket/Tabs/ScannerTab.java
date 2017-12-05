@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 
 import com.example.hellen.smartmarket.R;
 
-/**
- * Created by yuyip on 12/4/2017.
- */
 
 public class ScannerTab extends Fragment {
 

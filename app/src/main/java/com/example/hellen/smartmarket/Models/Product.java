@@ -12,9 +12,10 @@ public class Product {
     private int productQuantity;
     private int productPrice;
 
-    public Product(String productID, int productQuantity) {
+    public Product(String productID, int productQuantity, int productPrice) {
         this.productID = productID;
         this.productQuantity = productQuantity;
+        this.productPrice = productPrice;
     }
 
     public Product() {

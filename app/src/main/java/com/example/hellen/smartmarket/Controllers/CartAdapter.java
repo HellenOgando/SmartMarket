@@ -10,33 +10,32 @@ import android.widget.TextView;
 import com.example.hellen.smartmarket.Models.Product;
 import com.example.hellen.smartmarket.R;
 
-
 import java.util.List;
 
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductHolder>{
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHolder>{
 
     private List<Product> listData;
     private LayoutInflater inflater;
     private Context c;
 
-    public ProductAdapter(List<Product> listData, Context c){
+    public CartAdapter(List<Product> listData, Context c){
         this.inflater = LayoutInflater.from(c);
         this.c = c;
         this.listData = listData;
     }
     @Override
-    public ProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CartAdapter.CartHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = inflater.inflate(R.layout.productcardview, parent, false);
-        return new ProductHolder(v);
+        return new CartHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ProductHolder holder, int position) {
+    public void onBindViewHolder(CartAdapter.CartHolder holder, int position) {
 
         Product item = listData.get(position);
         holder.prodDesc.setText(item.getProductDesc());
-        holder.prodQuantity.setText("En inventario: "+ String.valueOf(item.getProductQuantity()));
+        holder.prodQuantity.setText(String.valueOf(item.getProductQuantity()));
         holder.prodPrice.setText("RD$ " + String.valueOf(item.getProductPrice()));
 
     }
@@ -46,14 +45,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         return listData.size();
     }
 
-    class ProductHolder extends RecyclerView.ViewHolder{
+    class CartHolder extends RecyclerView.ViewHolder{
 
         TextView prodDesc;
         TextView prodPrice;
         TextView prodQuantity;
 
 
-        private ProductHolder(View itemView) {
+        private CartHolder(View itemView) {
             super(itemView);
 
             prodDesc = (TextView) itemView.findViewById(R.id.productName);

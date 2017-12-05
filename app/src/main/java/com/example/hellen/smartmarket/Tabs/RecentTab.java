@@ -37,26 +37,36 @@ public class RecentTab extends Fragment {
 
         rvProducts = (RecyclerView) v.findViewById(R.id.rvProducts);
         tvEmptyCart = (TextView) v.findViewById(R.id.tvEmptyCart);
+
+        rvProducts.setLayoutManager(new LinearLayoutManager(getActivity()));
+        productAdapter = new ProductAdapter(scannedProd, getActivity());
+        rvProducts.setAdapter(productAdapter);
+
         return v;
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
 
+        if (isVisibleToUser) {
             scannedProd = Singleton.getInnstance().recentScans;
 
             if(scannedProd.size() > 0){
-//                tvEmptyCart.setVisibility(View.GONE);
-//                rvProducts.setVisibility(View.VISIBLE);
-
-                rvProducts.setLayoutManager(new LinearLayoutManager(getActivity()));
-                productAdapter = new ProductAdapter(scannedProd, getActivity());
-                rvProducts.setAdapter(productAdapter);
+                rvProducts.setVisibility(View.VISIBLE);
+                tvEmptyCart.setVisibility(View.GONE);
             }
-
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        scannedProd = Singleton.getInnstance().recentScans;
+
+        if(scannedProd.size() > 0){
+            rvProducts.setVisibility(View.VISIBLE);
+            tvEmptyCart.setVisibility(View.GONE);
+        }
+    }
 }
